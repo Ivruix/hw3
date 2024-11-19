@@ -9,3 +9,15 @@ contract CalldataMemory {
         }
     }
 }
+
+contract CalldataMemoryOptimized {
+    function add(uint256[] calldata myArray) external pure returns (uint256 sum) {
+        uint256 length = myArray.length;
+        for (uint256 i = 0; i < length;) {
+            sum += myArray[i];
+            unchecked {
+                ++i;
+            }
+        }
+    }
+}

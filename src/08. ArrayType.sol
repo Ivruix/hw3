@@ -10,3 +10,16 @@ contract ArrayType {
         }
     }
 }
+
+contract ArrayTypeOptimized {
+    uint16[200] array;
+
+    function initArray() external {
+        for (uint16 i; i < 200;) {
+            array[i] = i;
+            unchecked {
+                ++i;
+            }
+        }
+    }
+}
